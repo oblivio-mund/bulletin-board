@@ -1,0 +1,6 @@
+<?php
+declare(strict_types=1);
+$user = require_admin();
+$items = db()->query('SELECT user_id,display_name,login,role,is_active,created_at FROM users ORDER BY user_id')->fetchAll();
+?>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Пользователи</title><link rel="stylesheet" href="../assets/css/auth.css"></head><body><main class="site-shell"><header class="topbar"><a class="brand" href="<?= e(route_url('admin')) ?>">Администрирование</a><nav><a href="<?= e(route_url('admin/ads')) ?>">Модерация</a><a href="<?= e(route_url('admin/categories')) ?>">Категории</a><a href="<?= e(route_url('cabinet')) ?>">Кабинет</a></nav></header><section class="content-card"><h1>Пользователи</h1><div class="table-wrap"><table><thead><tr><th>ID</th><th>Имя</th><th>Логин</th><th>Роль</th><th>Активен</th><th>Регистрация</th></tr></thead><tbody><?php foreach($items as $item): ?><tr><td><?= (int)$item['user_id'] ?></td><td><?= e($item['display_name']) ?></td><td><?= e($item['login']) ?></td><td><span class="role-badge"><?= e($item['role']) ?></span></td><td><?= (int)$item['is_active'] ? 'Да' : 'Нет' ?></td><td><?= e((string)$item['created_at']) ?></td></tr><?php endforeach; ?></tbody></table></div></section></main></body></html>

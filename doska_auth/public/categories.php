@@ -1,0 +1,7 @@
+<?php
+declare(strict_types=1);
+$user = current_user();
+$stmt = db()->query('SELECT c.category_id,c.name,c.description,c.is_active,COUNT(a.ad_id) AS ads_count FROM categories c LEFT JOIN ads a ON a.category_id=c.category_id AND a.status=\'active\' WHERE c.is_active=1 GROUP BY c.category_id,c.name,c.description,c.is_active ORDER BY c.name');
+$items = $stmt->fetchAll();
+?>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Категории</title><link rel="stylesheet" href="../assets/css/auth.css"></head><body><main class="site-shell"><header class="topbar"><a class="brand" href="<?= e(route_url()) ?>">Доска объявлений</a><nav><a href="<?= e(route_url('ads')) ?>">Объявления</a><a href="<?= e(route_url('cities')) ?>">Города</a><?php if($user): ?><a href="<?= e(route_url('cabinet')) ?>">Кабинет</a><?php endif; ?></nav></header><section class="content-card"><span class="eyebrow">Сущность БД</span><h1>Категории</h1><div class="table-wrap"><table><thead><tr><th>ID</th><th>Название</th><th>Описание</th><th>Активные объявления</th></tr></thead><tbody><?php foreach($items as $item): ?><tr><td><?= (int)$item['category_id'] ?></td><td><?= e($item['name']) ?></td><td><?= e($item['description'] ?? '') ?></td><td><?= (int)$item['ads_count'] ?></td></tr><?php endforeach; ?></tbody></table></div></section></main></body></html>

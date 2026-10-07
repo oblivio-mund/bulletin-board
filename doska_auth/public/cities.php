@@ -1,0 +1,7 @@
+<?php
+declare(strict_types=1);
+$user = current_user();
+$stmt = db()->query('SELECT ci.city_id,ci.name,ci.region,ci.country,COUNT(a.ad_id) AS ads_count FROM cities ci LEFT JOIN ads a ON a.city_id=ci.city_id AND a.status=\'active\' GROUP BY ci.city_id,ci.name,ci.region,ci.country ORDER BY ci.name');
+$items = $stmt->fetchAll();
+?>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Города</title><link rel="stylesheet" href="../assets/css/auth.css"></head><body><main class="site-shell"><header class="topbar"><a class="brand" href="<?= e(route_url()) ?>">Доска объявлений</a><nav><a href="<?= e(route_url('ads')) ?>">Объявления</a><a href="<?= e(route_url('categories')) ?>">Категории</a><?php if($user): ?><a href="<?= e(route_url('cabinet')) ?>">Кабинет</a><?php endif; ?></nav></header><section class="content-card"><span class="eyebrow">Сущность БД</span><h1>Города</h1><div class="table-wrap"><table><thead><tr><th>ID</th><th>Город</th><th>Регион</th><th>Страна</th><th>Активные объявления</th></tr></thead><tbody><?php foreach($items as $item): ?><tr><td><?= (int)$item['city_id'] ?></td><td><?= e($item['name']) ?></td><td><?= e($item['region'] ?? '') ?></td><td><?= e($item['country']) ?></td><td><?= (int)$item['ads_count'] ?></td></tr><?php endforeach; ?></tbody></table></div></section></main></body></html>

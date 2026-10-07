@@ -89,3 +89,49 @@ button:hover, .button:hover { background: var(--primary-dark); }
     .auth-card, .home-card { padding: 24px; }
     h1 { font-size: 25px; }
 }
+
+/* Расширение предыдущего проекта: навигация, кабинет, списки сущностей и админ-панель. */
+body { margin: 0; }
+.site-shell { width: min(1180px, 94%); margin: 0 auto; padding: 24px 0 48px; }
+.topbar { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:16px 0 24px; }
+.topbar nav { display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; }
+.topbar nav a { color:#334155; text-decoration:none; font-size:14px; font-weight:600; }
+.topbar nav a:hover { color:#4a7cff; }
+.hero-card, .content-card { background:#fff; border-radius:18px; padding:32px; box-shadow:0 10px 30px rgba(0,0,0,.08); }
+.hero-card { margin-top:30px; }
+.hero-card h1, .content-card h1 { margin:8px 0 12px; }
+.hero-card p { color:#64748b; max-width:760px; line-height:1.7; }
+.eyebrow { display:inline-block; color:#4a7cff; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
+.actions, .admin-links { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+.button { display:inline-block; padding:12px 16px; border-radius:8px; background:#4a7cff; color:#fff; text-decoration:none; border:0; cursor:pointer; }
+.button.secondary { background:#e9eefc; color:#3156b8; }
+.page-head { display:flex; justify-content:space-between; gap:20px; align-items:flex-start; }
+.role-badge, .tag { display:inline-block; padding:5px 9px; border-radius:999px; background:#eef2ff; color:#334ea8; font-size:12px; font-weight:700; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin:24px 0; }
+.stats > div { padding:18px; border:1px solid #e7ebf0; border-radius:12px; background:#fafbfc; }
+.stats strong { display:block; font-size:26px; margin-bottom:5px; }
+.stats span { color:#64748b; font-size:13px; }
+.profile-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin:20px 0 30px; }
+.profile-grid p { margin:0; padding:12px; background:#f8fafc; border-radius:8px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; margin-top:16px; }
+th, td { padding:12px 10px; border-bottom:1px solid #e8ecf0; text-align:left; vertical-align:top; }
+th { background:#f8fafc; font-size:13px; }
+td { font-size:14px; }
+.entity-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:22px; }
+.entity-card { padding:20px; border:1px solid #e5e9ef; border-radius:14px; background:#fff; }
+.entity-card h2 { margin:14px 0 8px; font-size:20px; }
+.entity-card p { color:#64748b; line-height:1.6; min-height:52px; }
+.entity-top { display:flex; justify-content:space-between; gap:12px; color:#64748b; font-size:13px; }
+.price { display:block; font-size:18px; margin:14px 0 8px; }
+.entity-card small { color:#64748b; }
+.status { display:inline-block; padding:4px 8px; border-radius:999px; background:#eef2f7; font-size:12px; }
+.status-active { background:#e8f7ed; color:#187a35; }
+.status-pending { background:#fff6db; color:#8a6200; }
+.status-rejected { background:#ffe9e9; color:#b42318; }
+.status-archived, .status-deleted { background:#edf0f3; color:#59636f; }
+.inline-form { display:flex; gap:6px; min-width:310px; }
+.inline-form input, .inline-form select { padding:7px; border:1px solid #d5d9de; border-radius:6px; min-width:0; }
+.inline-form input { width:130px; }
+.inline-form button { padding:7px 10px; border:0; border-radius:6px; background:#4a7cff; color:#fff; cursor:pointer; }
+@media (max-width: 760px) { .topbar { align-items:flex-start; flex-direction:column; } .hero-card,.content-card { padding:22px; } .page-head { flex-direction:column; } .inline-form { flex-direction:column; min-width:180px; } .inline-form input { width:auto; } }

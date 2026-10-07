@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_id'] = (int)db()->lastInsertId();
                 $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
-                header('Location: index.php');
+                header('Location: ' . route_url('cabinet'));
                 exit;
             }
         }
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <main class="auth-page">
     <section class="auth-card">
-        <a class="brand" href="index.php">Доска объявлений</a>
+        <a class="brand" href="<?= e(route_url()) ?>">Доска объявлений</a>
         <h1>Создание аккаунта</h1>
         <p class="subtitle">Зарегистрируйтесь, чтобы публиковать объявления, сохранять избранное и общаться с пользователями.</p>
 
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <?php endif; ?>
 
-        <form method="post" action="register.php" novalidate>
+        <form method="post" action="<?= e(route_url('register')) ?>" novalidate>
             <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
 
             <label for="display_name">Имя</label>
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit">Зарегистрироваться</button>
         </form>
 
-        <p class="switch">Уже есть аккаунт? <a href="login.php">Войти</a></p>
+        <p class="switch">Уже есть аккаунт? <a href="<?= e(route_url('login')) ?>">Войти</a></p>
     </section>
 </main>
 </body>

@@ -6,5 +6,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verify_csrf($_POST['csrf_token'] ??
     logout_user();
 }
 
-header('Location: login.php');
+header('Location: ' . route_url('login'));
 exit;

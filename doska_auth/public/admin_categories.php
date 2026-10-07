@@ -1,0 +1,6 @@
+<?php
+declare(strict_types=1);
+$user = require_admin();
+$items = db()->query('SELECT c.category_id,c.name,c.description,c.is_active,u.display_name AS creator FROM categories c LEFT JOIN users u ON u.user_id=c.created_by ORDER BY c.category_id')->fetchAll();
+?>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Управление категориями</title><link rel="stylesheet" href="../assets/css/auth.css"></head><body><main class="site-shell"><header class="topbar"><a class="brand" href="<?= e(route_url('admin')) ?>">Администрирование</a><nav><a href="<?= e(route_url('admin/users')) ?>">Пользователи</a><a href="<?= e(route_url('admin/ads')) ?>">Модерация</a><a href="<?= e(route_url('cabinet')) ?>">Кабинет</a></nav></header><section class="content-card"><h1>Управление категориями</h1><div class="table-wrap"><table><thead><tr><th>ID</th><th>Название</th><th>Описание</th><th>Создал</th><th>Активна</th></tr></thead><tbody><?php foreach($items as $item): ?><tr><td><?= (int)$item['category_id'] ?></td><td><?= e($item['name']) ?></td><td><?= e($item['description'] ?? '') ?></td><td><?= e($item['creator'] ?? '—') ?></td><td><?= (int)$item['is_active'] ? 'Да' : 'Нет' ?></td></tr><?php endforeach; ?></tbody></table></div></section></main></body></html>
