@@ -98,6 +98,18 @@ function logout_user(): void
     session_destroy();
 }
 
+function flash(string $type, string $message): void
+{
+    $_SESSION['flash'] = ['type' => $type, 'message' => $message];
+}
+
+function consume_flash(): ?array
+{
+    $flash = $_SESSION['flash'] ?? null;
+    unset($_SESSION['flash']);
+    return is_array($flash) ? $flash : null;
+}
+
 function validate_registration(string $displayName, string $login, string $password, string $passwordConfirm): array
 {
     $errors = [];
