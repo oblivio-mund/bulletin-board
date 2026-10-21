@@ -48,7 +48,7 @@ $categoriesCount = (int)db()->query('SELECT COUNT(*) FROM categories')->fetchCol
         <div><h2>Быстрые действия</h2><p>Перейдите к нужному разделу управления.</p></div>
     </section>
     <section class="admin-module-grid">
-        <a class="admin-module" href="<?= e(route_url('admin/ads')) ?>"><span class="module-mark module-mark-orange">01</span><span><strong>Модерация объявлений</strong><small>Проверка публикаций и изменение статусов</small></span><span class="module-arrow">→</span></a>
+        <a class="admin-module" href="<?= e(route_url('admin/ads')) ?>"><span class="module-mark module-mark-orange">01</span><span><strong>Все объявления</strong><small>Поиск, фильтрация и модерация публикаций</small></span><span class="module-arrow">→</span></a>
         <a class="admin-module" href="<?= e(route_url('admin/users')) ?>"><span class="module-mark module-mark-blue">02</span><span><strong>Пользователи</strong><small>Просмотр учётных записей и ролей</small></span><span class="module-arrow">→</span></a>
         <a class="admin-module" href="<?= e(route_url('admin/categories')) ?>"><span class="module-mark module-mark-green">03</span><span><strong>Категории</strong><small>Просмотр категорий и их состояния</small></span><span class="module-arrow">→</span></a>
     </section>
