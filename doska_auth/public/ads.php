@@ -202,13 +202,16 @@ $filterQuery = http_build_query($filterParams);
         <?php elseif ($ads): ?>
             <div class="entity-grid">
                 <?php foreach ($ads as $ad): ?>
-                    <article class="entity-card">
-                        <div class="entity-top"><span class="tag"><?= e($ad['category_name']) ?></span><span><?= e($ad['city_name'] ?? 'Город не указан') ?></span></div>
+                    <article class="entity-card product-card">
+                        <div class="product-card-visual" aria-hidden="true"><span>ОБЪЯВЛЕНИЕ</span><b><?= e(mb_strtoupper(mb_substr((string)$ad['title'], 0, 1))) ?></b></div>
+                        <div class="entity-top product-card-meta"><span class="tag"><?= e($ad['category_name']) ?></span><span class="product-location">⌖ <?= e($ad['city_name'] ?? 'Город не указан') ?></span></div>
                         <h2><?= e($ad['title']) ?></h2>
                         <p><?= e(mb_strlen((string)$ad['description']) > 145 ? mb_substr((string)$ad['description'], 0, 145) . '…' : (string)$ad['description']) ?></p>
-                        <strong class="price"><?= $ad['price'] !== null ? e(number_format((float)$ad['price'], 2, ',', ' ')) . ' ₽' : 'Цена договорная' ?></strong>
-                        <small>Автор: <?= e($ad['author_name']) ?> · <?= e(date('d.m.Y', strtotime((string)$ad['published_at']))) ?></small>
-                        <a class="button secondary" href="<?= e(route_url('ads/view')) ?>?id=<?= (int)$ad['ad_id'] ?>">Подробнее</a>
+                        <div class="product-card-bottom">
+                            <strong class="price"><?= $ad['price'] !== null ? e(number_format((float)$ad['price'], 2, ',', ' ')) . ' ₽' : 'Цена договорная' ?></strong>
+                            <small>Автор: <?= e($ad['author_name']) ?> · <?= e(date('d.m.Y', strtotime((string)$ad['published_at']))) ?></small>
+                        </div>
+                        <a class="button secondary product-card-button" href="<?= e(route_url('ads/view')) ?>?id=<?= (int)$ad['ad_id'] ?>">Подробнее <span>→</span></a>
                     </article>
                 <?php endforeach; ?>
             </div>

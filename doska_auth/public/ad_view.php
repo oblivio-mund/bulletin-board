@@ -63,7 +63,7 @@ foreach ($images as $image) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= e($ad['title']) ?> — <?= e(APP_NAME) ?></title>
-    <link rel="stylesheet" href="<?= e(route_url()) ?>../assets/css/auth.css">
+    <link rel="stylesheet" href="<?= e(route_url()) ?>../assets/css/auth.css?v=20261028"><link rel="stylesheet" href="<?= e(route_url()) ?>../assets/css/detail.css?v=20261028">
 </head>
 <body>
 <main class="site-shell">

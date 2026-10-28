@@ -20,6 +20,7 @@ $routes = [
     'admin' => __DIR__ . '/admin.php',
     'admin/users' => __DIR__ . '/admin_users.php',
     'admin/ads' => __DIR__ . '/admin_ads.php',
+    'admin/ads/edit' => __DIR__ . '/admin_ad_edit.php',
     'admin/categories' => __DIR__ . '/admin_categories.php',
 ];
 
